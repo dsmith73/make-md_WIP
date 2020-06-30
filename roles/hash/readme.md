@@ -1,16 +1,11 @@
-# Hash & Quote style comments  
+# Hash style comments  
 
 ### Languages -  
 Some examples of languages which use slash Hash & Quote comments are:  
-  * python  
-  *   
+  * yaml  
+  
+Comment identifier:  
+`#`
 
-
-
-```py
-#  in-line
-
-"""
-code block  
-"""
-```
+Named field:  
+- name: 
