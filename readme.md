@@ -1,21 +1,39 @@
-# Make .MD files from the comments of parsed files  
->This will allow us to capture the process flow of a program / application in a new file for easy reference, without the clutter of the code.  
+ # Make MD Template  
+  
+ > This playbook will take a code file, passed as a var during execution, pull the comments out of the file, and create a markdown template file in the same directory as the code file. The purpose is to reduce effort of documenting code, and providing a simple outline to guide you through the process.
+  
+_this file was generated with_ ***make-md***
 
 ---
 
-**Steps:**  
-  * Pass a file to this playbook  
-  * The playbook will parse the file  
-    * Extract the comments  
-    * Write the comments to a file of the same name, with a .md extension  
+ ### Usage:  
+  
+ `ansible-playbook make_md_template.yml -e "code_file=<path to file>/<file name>"`
 
-```
- this will capture commented lines that start with the following characters: "#, ,\,//,\*,/*,;"  
- NOTE: it does assume a space after the comment character(s).  
- Group 1 is outdented comments  
- Group 2 is indented comments  
-```
+ ---   
 
+ ### Process:  
+  
+ Get the extension of the file and strip off the rest  
+ get the name, without the extension
+ get the file path
+ "Case statement to take the extension fact and convert it into {{ comment_style }}"
+  
+
+--- 
+  
+### Named Steps:  
+  
+  
+  * set facts for {{ code_file }}"  
+  * set {{ file_extension }} fact for the file in {{ file_path }}"  
+  * let's see what we captured"  
+  * run comment role for {{ comment_style }} commenting style"  
+  
+  
+  
+_ansible generated process flow wireframe for make_md_template.md_  
+  
 ---
 
 **Future:**  
