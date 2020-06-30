@@ -1,0 +1,49 @@
+---
+#############################################################################  
+# # Make MD Template  
+#  
+## > This playbook will take a code file, passed as a var during execution, pull the comments out of the file, and create a markdown template file in the same directory as the code file. The purpose is to reduce effort of documenting code, and providing a simple outline to guide you through the process.
+#  
+# ---  
+#
+## ### Usage:  
+#  
+## `ansible-playbook make_md_template.yml -e "code_file=<path to file>/<file name>"`
+#
+# ---   
+#
+## ### Process:  
+#############################################################################  
+
+- hosts: localhost
+  gather_facts: no
+  vars_files:
+    - vars.yml
+
+  tasks:
+  - name: "set facts for {{ code_file }}"
+    set_fact: 
+      ## Get the extension of the file and strip off the rest  
+      file_extension: "{{ code_file | regex_findall('(?i)^.*\\.(\\S+$)') | join() }}"
+      ## get the name, without the extension
+      md_code_file: "{{ code_file | basename | splitext | first }}.md"
+      ## get the file path
+      file_path: "{{ code_file | dirname }}"
+
+  - name: "set {{ file_extension }} fact for the file in {{ file_path }}"
+    set_fact:
+      # "Case statement to take the extension fact and convert it into {{ comment_style }}"
+      comment_style: '{{ EXTENSION_CASE[file_extension] | default("") }}'
+
+  - name: "Let's see what we captured"
+    debug:
+      msg: "extension : {{ file_extension }}, giving us a comment style of: {{ comment_style }}, and location: {{ file_path }}/{{ md_code_file }}"
+
+
+
+  - name: "run comment role for {{ comment_style }} commenting style"
+    include_role:
+      name: "{{ comment_style }}"
+
+
+

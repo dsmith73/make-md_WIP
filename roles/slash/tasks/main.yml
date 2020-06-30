@@ -1,0 +1,36 @@
+---
+# pass code_file var to this play
+## ansible-playbook main.yml -e "code_file=XXXXXXXXXXXXX"
+
+
+## Write out to the new file, of the same name_of_file + .md; create it if it doesn't exist
+- name: "write output to {{ file_path }}/{{ md_code_file }}"
+  lineinfile:
+    path: "{{ file_path }}/{{ md_code_file }}"
+    regexp: 'ansible generated flow for'
+    insertafter: EOF
+    line: "_ansible generated process flow wireframe for {{ md_code_file }}_  \n  "
+    state: present
+    create: yes
+    mode: 0777
+
+
+
+- name: "Add comment marker to {{ md_code_file }}"
+  lineinfile:
+    path: "{{ file_path }}/{{ md_code_file }}"
+    insertbefore: BOF
+    line: "# {{ md_code_file }}  \n"
+
+# write out Comments to the file
+- name: "Add Comments to {{ md_code_file }}"
+  lineinfile:
+    path: "{{ file_path }}/{{ md_code_file }}"
+    insertbefore: 'ansible generated process flow wireframe for {{ md_code_file }}'
+    line: "--- \n  \n### Code Comments:  \n  "
+- name: "Add comments to {{ md_code_file }}"
+  lineinfile:
+    path: "{{ file_path }}/{{ md_code_file }}"
+    insertbefore: 'ansible generated process flow wireframe for {{ md_code_file }}'
+    line: "  \n{{ item | regex_findall('(?:\\/(?=\\*)\\W+|\\/(?=\\*\\n))([^`]+?)(?:\\*(\\/))|(?:\\/(?=\\/)\\W+(.+)\\n)') | join('  \n') }}  \n  \n  "
+  with_file: "{{code_file}}"

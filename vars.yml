@@ -1,0 +1,16 @@
+
+EXTENSION_CASE: 
+  yml		: hash
+  yaml	: hash
+  htm		: web
+  html	: web
+  cpp		: slash
+  c++		: slash
+  c		  : slash
+  java	: slash
+  j		  : slash
+  j++		: slash
+  js		: slash
+  go		: slash
+
+TEST_VAR: 'dan'
