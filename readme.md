@@ -67,17 +67,20 @@ _The base of this file was generated with_ ***make-md***
             <td><code>  </code></td>
         </tr>
         <tr>
-            <td>Dash Dash</td>
+            <td>&#916;Dash Dash</td>
             <td><code> -- </code></td>
             <td><code> --[[ </code></td>
         </tr>
         <tr>
-            <td>Remark</td>
+            <td>&#916;Remark</td>
             <td><code> REM </code></td>
             <td><code> ' </code></td>
         </tr>
     </tbody>
 </table>
+
+
+Δ - Not fully implemented 
 
 ---
 
