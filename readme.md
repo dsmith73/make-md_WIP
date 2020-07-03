@@ -59,22 +59,22 @@ _this file was generated with_ ***make-md***
         <tr>
             <td>Web</td>
             <td><code> &lt;!--  --> </code></td>
-            <td><code></code></td>
+            <td><code> <meta> </code></td>
         </tr>
         <tr>
-            <td>Semi Colon</td>
+            <td>Semi-Colon</td>
             <td><code> ; </code></td>
             <td><code></code></td>
         </tr>
         <tr>
             <td>Dash Dash</td>
             <td><code> -- </code></td>
-            <td><code></code></td>
+            <td><code> --[[ </code></td>
         </tr>
         <tr>
             <td>Remark</td>
             <td><code> REM </code></td>
-            <td><code></code></td>
+            <td><code> ' </code></td>
         </tr>
     </tbody>
 </table>
