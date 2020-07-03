@@ -2,7 +2,7 @@
   
  > This playbook will take a code file, passed as a var during execution, pull the comments out of the file, and create a markdown template file in the same directory as the code file. The purpose is to reduce effort of documenting code, and providing a simple outline to guide you through the process.  
   
-_this file was generated with_ ***make-md***  
+_The base of this file was generated with_ ***make-md***  
 
 ---
 
