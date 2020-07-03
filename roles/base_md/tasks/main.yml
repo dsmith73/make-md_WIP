@@ -1,0 +1,23 @@
+---
+
+  - name: "Let's see what we captured"
+    debug:
+      msg: "extension : {{ file_extension }} | comment style : {{ comment_style }} | location : {{ file_path }}/{{ md_code_file }}"
+
+  ## Write out to the new file, of the same name_of_file + .md; create it if it doesn't exist
+  - name: "create {{ file_path }}/{{ md_code_file }}, set permissions, and write initial marker line"
+    lineinfile:
+      path: "{{ file_path }}/{{ md_code_file }}"
+      regexp: 'ansible generated flow for'
+      insertafter: EOF
+      line: "_ansible generated process flow wireframe for {{ md_code_file }}_  \n  "
+      state: present
+      create: yes
+      mode: 0777
+
+  - name: "ADD title - {{ md_code_file }}"
+    lineinfile:
+      path: "{{ file_path }}/{{ md_code_file }}"
+      insertbefore: BOF
+      line: "# {{ md_code_file }}  \n"
+      
